@@ -6,21 +6,18 @@ PORT = 6789
 ADDR = (IP, PORT)
 SIZE = 1024
 FORMAT = "utf-8"
-# DISCONNECT_MSG = "!DISCONNECT"
 
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
     # TCP connection set up
     connected = True
     while connected:
+        # Message was received and the key word was retrieved 
         msg = conn.recv(SIZE).decode(FORMAT)
-        print("msg1111 "+msg)
-            # .decode(FORMAT)
         filename = msg.split()[1]
         f = open(filename[1:])
         print(f"[{addr}] {msg}")
-
-        # f = open(filename)
+        
         outputdata = f.read()
         # Send the connection message
         conn.send(bytes("HTTP/1.1 200 OK","UTF-8"))
@@ -35,7 +32,7 @@ def main():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # Bind the socket to server address: IP and Port
     server.bind(ADDR)
-    # Ask the server to listen to multiple connections
+    # Allow server to listen to multiple connections
     server.listen()
     print(f"[LISTENING] Server is listening on {IP}:{PORT}")
 
