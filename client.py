@@ -1,3 +1,4 @@
+# Group member: Sophia Dai, Yujun Shen, Winnie Zong
 import socket
 import sys
 
