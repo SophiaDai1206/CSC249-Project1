@@ -1,2 +1,3 @@
+# Group member: Sophia Dai, Yujun Shen, Winnie Zong
 When we run the server.py, it is able to connect and communicate with client.py. However, there is an error in line 18: list Index out of range,
 but it doesn't affect the codes. Codes are working.
