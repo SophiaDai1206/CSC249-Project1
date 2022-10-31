@@ -6,21 +6,18 @@ PORT = 6789
 ADDR = (IP, PORT)
 SIZE = 1024
 FORMAT = "utf-8"
-# DISCONNECT_MSG = "!DISCONNECT"
 
 def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected.")
     # TCP connection set up
     connected = True
     while connected:
+        # Interpret the message sent from the client
         msg = conn.recv(SIZE).decode(FORMAT)
-        print("msg1111 "+msg)
-            # .decode(FORMAT)
         filename = msg.split()[1]
         f = open(filename[1:])
         print(f"[{addr}] {msg}")
 
-        # f = open(filename)
         outputdata = f.read()
         # Send the connection message
         conn.send(bytes("HTTP/1.1 200 OK","UTF-8"))
